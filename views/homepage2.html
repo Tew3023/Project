@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.33/dist/sweetalert2.all.min.js"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="/style/homepage.css">
+    <link rel="stylesheet" href="/style/alert.css">
+    <link rel="stylesheet" href="/style/bg.css">
+    <link rel="stylesheet" href="/style/order.css">
+    <link rel="stylesheet" href="/style/food-place.css">
+    <title>HOMEPAGE</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">
+                <p>LPG</p>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                      <a href="/cart"><button type="button" id="cart" class="btn-1">CART</button></a>  
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" onclick="show()" class="btn-1">NOTIFICATION</button>
+                    </li>
+                    <li class="nav-item">
+                       <a href="/profile"><button type="button" class="btn-1">PROFILE</button></a>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" id="logout" class="btn-1">LOGOUT</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="bg-image"></div>
+
+    <!-- alert -->
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong>Warning!</strong> your gas may run out in <span class="time"></span>
+    </div>
+    <!-- alert -->
+    <div class="bg">
+        <div class="container">
+            <div class="bg-content">
+                <div class="container">
+                    <div class="left"> <button type="button" id="btn-product-1" class="btn-product">PRODUCT</button>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="right"> <button type="button" id="btn-product-2" class="btn-product">FOOD</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid">
+        <div id="border-1" class="container">
+            <div class="grid-text">
+                <p id="title-1" class="grid-text-1">SHIPPING</p>
+                <p class="grid-text-1">Our shipping process is designed to get your order to you as quickly as possible.
+                </p>
+            </div>
+        </div>
+        <div id="border-2" class="container">
+            <div class="grid-text">
+                <p id="title-2" class="grid-text-1">PRODUCT</p>
+                <p class="grid-text-1">We're dedicated to providing you with products that offer exceptional value for
+                    your money. Our gas tanks are competitively priced without compromising on quality.</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="grid-text">
+                <p id="title-3" class="grid-text-1">FOOD</p>
+                <p class="grid-text-1">wholesome ingredients. Many of our food items are sourced directly from local
+                    farms and producers.</p>
+            </div>
+        </div>
+    </div>
+    <div id="main-topic" class="text pt-5">BEST SELLER</div>
+    <div id="main" class="container d-flex flex-wrap mt-5  "></div>
+    <br>
+    <br>
+    <br>
+    <div class="text">IF YOU'RE LOOKING FOR MORE</div>
+    <div id="tool" class="container d-flex flex-wrap mt-5 "></div>
+    <br>
+    <br>
+    <br>
+    <div id="food-topic" class="pt-5">
+        <div class="container">
+            <div class="food-place">
+                <div class="picture">
+                    <img src="https://images.unsplash.com/photo-1541614101331-1a5a3a194e92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTV8fGNvb2tpbmclMjBhc2lhbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="unsplash">
+                </div>
+                <div class="food-content">
+                    <h4>Food Service</h4>
+                    <hr>
+                    <p>At Gaotas, we understand that life can sometimes be a whirlwind, and there are moments when you need your essentials in a hurry. That's why we're thrilled to introduce our Express Food Delivery service to make your life a little easier.When you're in a rush and craving something delicious, our Express Food Delivery is your solution. We've streamlined our delivery process to ensure that your favorite food items arrive at your doorstep swiftly and conveniently.
+                        Whether it's a hearty breakfast, a quick lunch, or a savory dinner, our menu offers a delectable selection of food items that are not only tasty but also carefully prepared to maintain their quality and flavor.
+                    </p>
+                    <br>
+                    <hr>
+                    <h1 class="menu" ><iconify-icon icon="memory:arrow-up" rotate="180deg"></iconify-icon> MENU <iconify-icon icon="memory:arrow-up" rotate="180deg"></iconify-icon></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="food" class="container d-flex flex-wrap mt-5 "></div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="footer">
+        <table class="table table-borderless text-white">
+            <thead>
+                <tr>
+                    <th>Help</th>
+                    <th>Company</th>
+                    <th>Get the app</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Help center</td>
+                    <td>About us</td>
+                    <td>iOS app</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <!--Modal -->
+    <div class="modal" id="productmodal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="modal-header">
+                        <div class="modal-title">
+                            <h4>Product</h4>
+                        </div>
+                    </div>
+                    <div class="modal-image">
+                    </div>
+                    <h4 class="type-product"></h4>
+                    <p class="price-prduct-content">$<span class="price-product"></span>Baht / Unit</p>
+                    <hr />
+                    <div class="btn-element">
+                        <label id="amount-label" for="amount">Amount:</label>
+                        <select name="amount" id="amount">
+                            <option value="1">1 unit</option>
+                            <option value="2">2 unit</option>
+                            <option value="3">3 unit</option>
+                            <option value="4">4 unit</option>
+                            <option value="5">5 unit</option>
+                        </select>
+                        <div class="total"><span class="totalprice"></span>Baht</div>
+                    </div>
+                    <hr />
+                    <div class="modal-btn">
+                        <div class="modal-btn"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal -->
+
+    <script>
+        //=========================================== setttimer ============================================
+        let timerStarted = false; // Flag to track if the timer has been started
+
+        fetch('/get_timer')
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw Error('Bad response');
+            })
+            .then(function (data) {
+                if (Array.isArray(data)) {
+                    for (let i = 0; i < data.length; i++) {
+                        if (data[i].orderStatus === 'transport' && !timerStarted) {
+                            startTimer();
+                            timerStarted = true; // Set the flag to indicate that the timer has been started
+                        }
+                    }
+                }
+            })
+            .catch(function (err) {
+                console.error(err);
+                alert('An error occurred: ' + err.message);
+            });
+        document.querySelector('.time').innerHTML =
+        30 + ":" + '00';
+        function startTimer() {
+        var presentTime = document.querySelector('.time').innerHTML;
+        var timeArray = presentTime.split(/[:]+/);
+        var m = timeArray[0];
+        var s = checkSecond((timeArray[1] - 1));
+        if (s == 59) { m = m - 1 }
+        if (m < 0) {
+            return
+        }
+
+        document.querySelector('.time').innerHTML =
+            m + ":" + s;
+        setTimeout(startTimer, 1000);
+
+    }
+
+    function checkSecond(sec) {
+        if (sec < 10 && sec >= 0) { sec = "0" + sec }; // add zero in front of numbers < 10
+        if (sec < 0) { sec = "59" };
+        return sec;
+    }
+
+
+        // =========================================== scrolldown event =====================================
+        let lastScrollY = 0
+        let navbar = document.querySelector('.navbar')
+        const show_alert = document.querySelector('.alert')
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY) {
+                navbar.classList.add('hide');
+                show_alert.style.display = 'none';
+
+            } else {
+                navbar.classList.remove('hide');
+            }
+            lastScrollY = window.scrollY
+        });
+        document.querySelector('#logout').onclick = () => {
+            fetch("/logout")
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.text();
+                    }
+                    throw Error("Cannot logout");
+                })
+                .then(function (data) {
+                    location.replace(data);
+                })
+                .catch(function (error) {
+                    console.error(error);
+                })
+        }
+
+        //===================== countdown function =====================================
+        const show = () => {
+            show_alert.style.display = 'block'
+        }
+
+        //================================================== modal ==============================================
+        const productmodal = new bootstrap.Modal(
+            document.querySelector("#productmodal")
+        );
+        // ============================================ slide show  ==============================================
+        const btn_product_1 = document.querySelector('#btn-product-1')
+        const btn_product_2 = document.querySelector('#btn-product-2')
+        const main_topic = document.querySelector('#main-topic')
+        const food_topic = document.querySelector('#food-topic')
+        btn_product_1.addEventListener('click', () => {
+            main_topic.scrollIntoView({ behavior: 'smooth' })
+        })
+        btn_product_2.addEventListener('click', () => {
+            food_topic.scrollIntoView({ behavior: 'smooth' })
+        })
+
+
+        //========================================= modal =========================================================
+        function modal_1(product) {
+            const div_price = document.querySelector('.totalprice');
+            const dropDown = document.querySelector("#amount");
+            //insert data for each part
+            document.querySelector('.type-product').innerHTML = product.name;
+            document.querySelector('.price-product').innerHTML = product.price;
+            const productImageElement = document.querySelector('.modal-image');
+            productImageElement.innerHTML = `<img src="${product.image}" alt="">`;
+            const buttonelement = document.querySelector('.modal-btn');
+            buttonelement.innerHTML = `<button onclick='order_product(${product.productid},${product.price},"${product.image}",${product.duration})' class = "btn-2">PURCHASE</button>`;
+            //total price 
+            const unit = parseInt(document.querySelector('#amount').value);
+            totalprice = unit * product.price;
+            div_price.innerHTML = totalprice;
+            const dropdown = document.querySelector('#amount');
+            const update_modal = function () {
+                //get value from dropdown list 
+                const unit = parseInt(document.querySelector('#amount').value);
+                //total price 
+                totalprice = unit * product.price;
+                div_price.innerHTML = totalprice;
+                //total_unit
+                total_unit = unit;
+            }
+            //keep update totalprice
+            dropDown.addEventListener('change', update_modal);
+            //show modal
+            productmodal.show();
+
+
+        }
+        function modal_2(equipment) {
+            const div_price = document.querySelector('.totalprice');
+            const dropDown = document.querySelector("#amount");
+            //insert data for each part
+            document.querySelector('.type-product').innerHTML = equipment.name;
+            document.querySelector('.price-product').innerHTML = equipment.price;
+            const productImageElement = document.querySelector('.modal-image');
+            productImageElement.innerHTML = `<img src="${equipment.picture}" alt="">`;
+            const buttonelement = document.querySelector('.modal-btn');
+            buttonelement.innerHTML = `<button onclick='order_equipment(${equipment.price},${equipment.equid},"${equipment.picture}")' class = "btn-2">PURCHASE</button>`;
+            //total price 
+            const unit_2 = parseInt(document.querySelector('#amount').value);
+            totalprice = unit_2 * equipment.price;
+            div_price.innerHTML = totalprice;
+            const dropdown = document.querySelector('#amount');
+            const update_modal = function () {
+                //get value from dropdown list 
+                const unit_2 = parseInt(document.querySelector('#amount').value);
+                //total price 
+                totalprice = unit_2 * equipment.price;
+                div_price.innerHTML = totalprice;
+                //total_unit_2
+                total_unit_2 = unit_2;
+            }
+            //keep update totalprice
+            dropDown.addEventListener('change', update_modal);
+            //show modal
+            productmodal.show();
+        }
+
+        function modal_3(food) {
+            const div_price = document.querySelector('.totalprice');
+            const dropDown = document.querySelector("#amount");
+            //insert data for each part
+            document.querySelector('.type-product').innerHTML = food.name;
+            document.querySelector('.price-product').innerHTML = food.price;
+            const productImageElement = document.querySelector('.modal-image');
+            productImageElement.innerHTML = `<img src="${food.picture}" alt="">`;
+            const buttonelement = document.querySelector('.modal-btn');
+            buttonelement.innerHTML = `<button onclick='order_food(${food.price},${food.fid},"${food.picture}")' class = "btn-2">PURCHASE</button>`;
+            //total price 
+            const unit_3 = parseInt(document.querySelector('#amount').value);
+            totalprice = unit_3 * food.price;
+            div_price.innerHTML = totalprice;
+            const dropdown = document.querySelector('#amount');
+            const update_modal = function () {
+                //get value from dropdown list 
+                const unit_3 = parseInt(document.querySelector('#amount').value);
+                //total price 
+                totalprice = unit_3 * food.price;
+                div_price.innerHTML = totalprice;
+                //total_unit_3
+                total_unit_3 = unit_3;
+            }
+            //keep update totalprice
+            dropDown.addEventListener('change', update_modal);
+            //show modal
+            productmodal.show();
+        }
+        //========================================  show data  =================================================
+        const main = document.querySelector('#main')
+        fetch('/product')
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw Error('Bad response');
+            })
+            .then(function (data) {
+                data.forEach(function (product) {
+                    const card = document.createElement('div');
+                    card.id = "product"
+                    card.className = 'card';
+                    let cardDetail = `
+                    <img src = '${product.image}' class ='card-img-top ' style = 'width:200px; height:200px'>
+                    <div class="card-body">
+                        <h5 class = "card-title">${product.name} gas</h5>                        
+                        <p class = "card-text">${product.price} Baht</p>
+                        <button onclick=modal_1(${JSON.stringify(product)}) class = "btn-order">ADD TO CART</button>
+                    </div>`;
+                    card.innerHTML = cardDetail;
+                    main.append(card);
+                });
+            })
+            .catch(function (err) {
+                console.error(err);
+                alert('System error, try again later');
+            });
+
+        const tool = document.querySelector('#tool')
+        fetch('/equipment')
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw Error('Bad response');
+            })
+            .then(function (data) {
+                data.forEach(function (equipment) {
+                    const card = document.createElement('div');
+                    card.id = "equipment"
+                    card.className = 'card';
+                    let cardDetail = `
+                    <img src = '${equipment.picture}' class ='card-img-top' style = 'width:200px; height:200px'>
+                    <div class="card-body">
+                        <h5 class = "card-title">${equipment.name}</h5>
+                        <p class = "card-text">${equipment.price} Baht</p>
+                        <button onclick='modal_2(${JSON.stringify(equipment)})' class = "btn-order">ADD TO CART</button>
+                    </div>`;
+                    card.innerHTML = cardDetail;
+                    tool.append(card);
+                });
+            })
+            .catch(function (err) {
+                console.error(err);
+                alert('System error, try again later');
+            });
+
+        const foodplace = document.querySelector('#food')
+        fetch('/food')
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw Error('Bad response');
+            })
+            .then(function (data) {
+                data.forEach(function (food) {
+                    const card = document.createElement('div');
+                    card.id = "eat"
+                    card.className = 'card';
+                    let cardDetail = `
+                    <img src = '${food.picture}'  class ='card-img-top' style = 'width:200px; height:200px'>
+                    <div class="card-body">
+                        <h5 class = "card-title">${food.name}</h5>
+                        <p class = "card-text">${food.price} Baht</p>
+                        <button onclick='modal_3(${JSON.stringify(food)})' class = "btn-order">ADD TO CART</button>        
+                    </div>`;
+                    card.innerHTML = cardDetail;
+                    foodplace.append(card);
+                });
+            })
+            .catch(function (err) {
+                console.error(err);
+                alert('System error, try again later');
+            });
+
+        //=================================     insert data        ===================================
+        let total_unit;
+        let total_unit_2;
+        let total_unit_3;
+        let totalprice;
+        const currentDate = new Date();
+        const year = currentDate.getFullYear(); // ปีปัจจุบัน (e.g., 2023)
+        const month = currentDate.getMonth() + 1; // เดือนปัจจุบัน (0-11, เพิ่มเลข 1 เพื่อเริ่มนับเดือนที่ 1)
+        const day = currentDate.getDate(); // วันที่ปัจจุบัน (1-31)
+        const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+        let currenttime = new Date();
+        let hh = currenttime.getHours();
+        let mm = currenttime.getMinutes();
+        let ss = currenttime.getSeconds();
+        hh = hh < 10 ? `0${hh}` : hh;
+        mm = mm < 10 ? `0${mm}` : mm;
+        ss = ss < 10 ? `0${ss}` : ss;
+        let time = `${hh}:${mm}:${ss}`;
+        status = "not_comfirm";
+        //=================================     main function       ===================================
+        function order_product(productid, price, image, duration) {
+            order_p_id = Math.floor(Math.random() * 1000000000);
+            Swal.fire({
+                icon: 'question',
+                title: 'Are you sure',
+                text: "Sure to Order this Product",
+                showCancelButton: true,
+                confirmButtonText: 'Yes'
+            }).then(function (result) {
+                if (result.isConfirmed) {
+                    let url = '/product_order';
+                    let httpMethod = 'POST';
+                    let bodyContent = JSON.stringify(
+                        { "order_p_id": order_p_id, "productid": productid, "image": image, "amount": total_unit, "price": totalprice, "date": formattedDate, "time": time, "status": status }
+                    );
+                    fetch(url, {
+                        method: httpMethod,
+                        headers: { "Content-Type": "application/json" },
+                        body: bodyContent
+                    })
+                        .then(function (response) {
+                            if (response.ok) {
+                                Swal.fire({
+                                    "icon": "success",
+                                    "title": "success"
+                                })
+                                productmodal.hide();
+                            }
+                            else {
+                                throw Error('Bad response');
+                                console.log(err);
+                            }
+                        })
+                        .catch(function (err) {
+                            Swal.fire({
+                                "icon": "error",
+                                "title": "error"
+                            })
+
+                        });
+                } else {
+                }
+            })
+        }
+
+        function order_equipment(price, equid, picture) {
+            order_e_id = Math.floor(Math.random() * 1000000000);
+            Swal.fire({
+                icon: 'question',
+                title: 'Are you sure',
+                text: "Sure to Order this Product",
+                showCancelButton: true,
+                confirmButtonText: 'Yes'
+            }).then(function (result) {
+                if (result.isConfirmed) {
+                    let url = '/equipment_order';
+                    let httpMethod = 'POST';
+                    let bodyContent = JSON.stringify(
+                        { "order_e_id": order_e_id, "equipmentid": equid, "image": picture, "amount": total_unit_2, "price": totalprice, "date": formattedDate, "time": time, "status": status }
+                    );
+                    fetch(url, {
+                        method: httpMethod,
+                        headers: { "Content-Type": "application/json" },
+                        body: bodyContent
+                    })
+                        .then(function (response) {
+                            if (response.ok) {
+                                Swal.fire({
+                                    "icon": "success",
+                                    "title": "success"
+                                })
+                                productmodal.hide();
+                            }
+                            else {
+                                throw Error('Bad response');
+                                console.log(err);
+                            }
+                        })
+                        .catch(function (err) {
+                            Swal.fire({
+                                "icon": "error",
+                                "title": "error"
+                            })
+
+                        });
+                } else {
+
+                }
+            })
+
+        }
+
+        function order_food(price, fid, picture) {
+            const order_f_id = Math.floor(Math.random() * 1000000000);
+            Swal.fire({
+                icon: 'question',
+                title: 'Are you sure',
+                text: "Sure to Order this Product",
+                showCancelButton: true,
+                confirmButtonText: 'Yes'
+            }).then(function (result) {
+                if (result.isConfirmed) {
+                    let url = '/food_order';
+                    let httpMethod = 'POST';
+                    let bodyContent = JSON.stringify(
+                        { "order_f_id": order_f_id, "foodid": fid, "image": picture, "amount": total_unit_3, "price": totalprice, "date": formattedDate, "time": time, "status": status }
+                    );
+                    fetch(url, {
+                        method: httpMethod,
+                        headers: { "Content-Type": "application/json" },
+                        body: bodyContent
+                    })
+                        .then(function (response) {
+                            if (response.ok) {
+                                Swal.fire({
+                                    "icon": "success",
+                                    "title": "success"
+                                })
+                                productmodal.hide();
+                            }
+                            else {
+                                throw Error('Bad response');
+                                console.log(err);
+                            }
+                        })
+                        .catch(function (err) {
+                            Swal.fire({
+                                "icon": "error",
+                                "title": "error"
+                            })
+
+                        });
+                } else {
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.5/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine|Lobster|IBM+Plex+Mono">
+    <link rel="stylesheet" href="/style/forget.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <span class="icon-close"><ion-icon name="close"></ion-icon></span>
+        <div class="form-login">
+            <h1>Did you forget your password?</h1>
+            <input type="text" id="name" class="form-control" placeholder="Name">
+            <input type="password" id="password1" class="form-control" placeholder="Please enter your new password">
+            <input type="password" id="password2" class="form-control" placeholder="Confirm new password">
+        </div>
+        <div class="input-field">
+            <button id="confirm-btn" class="btnlogin" onclick="confrim_name()">confirm Name</button><br>
+            <div id="main"></div>
+        </div>
+        <div class="modal" id="OTPmodal">
+
+
+        </div>
+        <script>
+            document.querySelector('#password1').disabled = true;
+            document.querySelector('#password2').disabled = true;
+            function back() {
+                location.replace('/login')
+            }
+            function confrim_name() {
+                const name = document.querySelector('#name').value;
+                const btn_confirm = document.querySelector('#confirm-btn')
+                let url = '/reset_password';
+                let httpMethod = 'POST';
+                let bodyContent = JSON.stringify(
+                    { "name": name }
+                );
+                fetch(url, {
+                    method: httpMethod,
+                    headers: { "Content-Type": "application/json" },
+                    body: bodyContent
+                })
+                    .then(function (response) {
+                        if (response.ok) {
+                            button();
+                            document.querySelector('#confirm-btn').style.display = "none";
+                            document.querySelector('#password1').disabled = false;
+                            document.querySelector('#password2').disabled = false;
+                        }
+                        else if (name === '') {
+                            Swal.fire({
+                                "icon": "error",
+                                "title": "please confirm the name"
+                            })
+                        }
+                        else {
+                            throw Error('Bad response');
+                            console.log(err);
+                        }
+                    })
+                    .catch(function (err) {
+                        Swal.fire({
+                            "icon": "error",
+                            "title": "error"
+                        });
+                        console.log(err)
+
+                    });
+            }
+
+
+            var editID = 0;
+            function button() {
+                const main = document.querySelector('#main');
+                fetch('/reset_password')
+                    .then(function (response) {
+                        if (response.ok) {
+                            return response.json();
+                        }
+                        throw Error('Bad response');
+                    }).then(function (data) {
+                        data.forEach(function (reset_password) {
+                            const card = document.createElement('div');
+                            card.className = 'card p-5 m-2 shadow';
+                            let cardDetail = `
+            <div class="card-body">
+                <button onclick='reset(${JSON.stringify(reset_password)})' class="btnlogin">Confirm password</button>
+            </div>`;
+                            card.innerHTML = cardDetail;
+                            main.append(card);
+                        });
+                    })
+                    .catch(function (err) {
+                        console.error(err);
+                        alert(err);
+                    });
+            }
+
+            function reset(reset_password) {
+                const password1 = document.querySelector('#password1').value;
+                const password2 = document.querySelector('#password2').value;
+                if ((password1 === '') || (password2 === '')) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'error',
+                        text: 'Please enter password'
+                    })
+                    return;
+                }
+                if (password1 !== password2) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'error',
+                        text: 'Your password might be wrong'
+                    })
+                    return;
+                }
+                editID = reset_password.userid;
+                let url = `/reset_password/${editID}`;
+                let httpMethod = 'PUT';
+                let bodyContent = JSON.stringify(
+                    { "password": password1 }
+                );
+                fetch(url, {
+                    method: httpMethod,
+                    headers: { "Content-Type": "application/json" },
+                    body: bodyContent
+                })
+                    .then(function (response) {
+                        if (response.ok) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Confirm successfully'
+                            }).then(function () {
+                                window.location.replace('/login')
+                            })
+                        } else {
+                            throw Error('Bad response');
+                        }
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                        Swal.fire({
+                            "icon": "error",
+                            "title": "Error"
+                        });
+                    });
+            }
+        </script>
+</body>
+
+</html>

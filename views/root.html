@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="short icon" href="/public/logo_mountain 1.png">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <title>Root</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm bg-ligh my-6">
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mx-auto order-0 ">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">
+                        <img src="/img/home.png" alt="Home">
+                        <span class="d-inline-block align-middle text-decoration-underline"
+                            style="color: #5E56CC;">Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">
+                        <img src="/img/Pic.png" alt="Pic">
+                        <span class="d-inline-block align-middle">Image</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">
+                        <img src="/img/Video.png" alt="Video">
+                        <span class="d-inline-block align-middle">Video</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">
+                        <img src="/img/Pic.png" alt="Pic">
+                        <span class="d-inline-block align-middle">Free Image</span>
+                    </a>
+                </li>
+            </ul>
+            <nav>
+                <ul class="navbar-nav me-auto order-1">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">
+                            <img src="/img/pro.png" alt="Pic" style="height: 32px; width: 32px;">
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </nav>
+     <!-- carousel -->
+     <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true" aria-label="First slide"></li>
+            <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
+            <li data-bs-target="#carouselId" data-bs-slide-to="2" aria-label="Third slide"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <img src="/img/pic1.jpg" class="w-100 d-block" alt="First slide" style="height: 600px;">
+                <div class="carousel-caption d-none d-md-block"></div>
+            </div>
+            <div class="carousel-item">
+                <img src="/img/Switzerland.jpg" class="w-100 d-block" alt="Second slide"  style="height: 600px;">
+                <div class="carousel-caption d-none d-md-block"></div>
+            </div>
+            <div class="carousel-item">
+                <img src="/img/veni.jpg" class="w-100 d-block" alt="Third slide"  style="height: 600px;">
+                <div class="carousel-caption d-none d-md-block"></div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="row" style="margin-top: 50px; margin-left: 5%; bottom: 100%;">
+        <div class="col-4">
+            <div class="container mt-3">
+                <div class="card " style="width:300px">
+                    <img class="card-img-top" src="/img/ima.jpg" style="width:100%; height: 350px;">
+                    <div class="card-body">
+                        <h4 class="card-title">Image</h4>
+                        <p class="card-text">You can choose from a wide variety of images.</p>
+                        <a href="/login" class="btn btn-primary" style="display: flex;align-items: center;
+                        justify-content: center;">See More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="container mt-3">
+                <div class="card " style="width:300px">
+                    <img class="card-img-top" src="/img/vid.jpg" style="width:100%; height: 350px;">
+                    <div class="card-body">
+                        <h4 class="card-title">Video</h4>
+                        <p class="card-text">Find a lot of videos here that interest you.</p>
+                        <a href="/login" class="btn btn-primary" style="display: flex;align-items: center;
+                        justify-content: center;">See More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="container mt-3">
+                <div class="card " style="width:300px">
+                    <img class="card-img-top" src="/img/free.jpg" style="width:100%; height: 350px;">
+                    <div class="card-body">
+                        <h4 class="card-title">Free Image</h4>
+                        <p class="card-text">Collection of freely downloadable photos.</p>
+                        <a href="/login" class="btn btn-primary" style="display: flex;align-items: center;
+                    justify-content: center;">See More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        fetch('/root')
+            .then(function (response) {
+                if (response.ok) {
+                    return response.text();
+                }
+                throw Error('Server returns not OK');
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+
+    </script>
+</body>
+
+</html>

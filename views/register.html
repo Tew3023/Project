@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.5/dist/sweetalert2.all.min.js"></script>
+    <title>REGISTER</title>
+    <link rel="stylesheet" href="/style/register.css">
+</head>
+
+<body>
+    <header>
+    </header>
+    <div class="wrapper">
+        <span class="icon-close"><ion-icon name="close"></ion-icon></span>
+        <form onsubmit="condition()">
+            <div class="formbox-register">
+                <h1>Registration</h1>
+                <label for="some-text">PLEASE FULL FILL YOUR INFORMATION</label>
+                <input type="text" class="form-control" name="" id="name" aria-describedby="helpId"
+                    placeholder="Yourname">
+                <input type="password" class="form-control" name="" id="password" aria-describedby="helpId"
+                    placeholder="Password">
+                <input type="number" class="form-control" name="" id="number" aria-describedby="helpId"
+                    placeholder="Number">
+                <input type="email" class="form-control " name="" id="email" aria-describedby="helpId"
+                    placeholder="Email">
+                <input type="text" class="form-control " name="" id="address" aria-describedby="helpId"
+                    placeholder="address">
+                <input type="text" class="form-control " name="" id="district" aria-describedby="helpId"
+                    placeholder="District">
+                <input type="text" class="form-control " name="" id="province" aria-describedby="helpId"
+                    placeholder="Province">
+                <input type="number" class="form-control " name="" id="zipcode" aria-describedby="helpId"
+                    placeholder="Postcode">
+                <button type="button" onclick="condition()" id="btn" class="btn btn-primary w-100">Register</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function register() {
+            const userid = Math.floor(Math.random() * 1000);
+            const name = document.querySelector('#name').value;
+            const password = document.querySelector('#password').value;
+            const number = document.querySelector('#number').value;
+            const email = document.querySelector('#email').value;
+            const address = document.querySelector('#address').value;
+            const zipcode = document.querySelector('#zipcode').value;
+            const district = document.querySelector('#district').value;
+            const province = document.querySelector('#province').value;
+            const full_address = `${address} ${district} ${province} ${zipcode}`;
+            const role = 1;
+            
+
+            let url = '/register';
+            let httpMethod = 'POST';
+            let bodyContent = JSON.stringify(
+                { "userid": userid, "name": name, "password": password, "address": full_address, "email": email, "number": number, "role": role }
+            );
+            fetch(url, {
+                method: httpMethod,
+                headers: { "Content-Type": "application/json" },
+                body: bodyContent
+            })
+                .then(function (response) {
+                    if (response.ok) {
+                        Swal.fire({
+                            "icon": "success",
+                            "title": "success"
+                        }).then(function () {
+                            location.replace('/login')
+                        })
+                    }
+                    else {
+                        throw Error('Bad response');
+                        console.log(err);
+                    }
+                })
+                .catch(function (err) {
+                    Swal.fire({
+                        "icon": "error",
+                        "title": "error"
+                    })
+
+                });
+        }
+        function condition() {
+            const name = document.querySelector('#name').value;
+            const password = document.querySelector('#password').value;
+            const number = document.querySelector('#number').value;
+            const email = document.querySelector('#email').value;
+            const address = document.querySelector('#address').value;
+            const zipcode = document.querySelector('#zipcode').value;
+            const district = document.querySelector('#district').value;
+            const province = document.querySelector('#province').value;
+            let isActivated = false;
+            if ((name === '') || (password === '') || (email === '') || (address === '') || (zipcode === '') || (district === '') || (province === '')) {
+                Swal.fire({
+                    "icon": "error",
+                    "title": "Please complete your information"
+                })
+            }
+            else {
+                register();
+            }
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

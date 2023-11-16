@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+html {
+    font-size: calv(60% + 0.8vmin);   
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('https://www.ncass.org.uk/wp-content/uploads/2021/01/Hamilton-Gas-NCASS.jpg')  no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.wrapper {
+    position: relative;
+    width: 25rem;
+    height: 27.5rem;
+    background: transparent;
+    border: 0.125rem solid rgba(255, 255, 255, .5);
+    border-radius: 1.25rem;
+    backdrop-filter:blur(1.25rem);
+    box-shadow: 0 0 1.875rem rgba(0,0,0,.5);
+    
+}
+.wrapper .form-login {
+    font-size: .9em;
+    color:white;
+    text-align: center;
+    font-weight: 500;
+    margin: 0.063 ;
+    padding: 15%;
+    border: none;
+    border-radius: 0.375rem;
+    margin-top: 10%;
+}
+.wrapper .form-login .form-control {
+    width: 100%;
+    font-size: .9em;
+    color: black;
+    text-align: left;
+    font-weight: 500;
+    margin: 0.156rem ;
+    padding: 0.563rem;
+    border: none;
+    border-radius: 0.625rem;
+    
+}
+.remember-forgot .label input {
+    accent-color: black;
+    margin-right: 0.188rem;
+}
+.remember-forgot a{
+    color: black;
+    text-decoration: none;
+    margin-right: 0.125rem;
+}
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.wrapper .input-field .btnlogin {
+    width: 80%;
+    height: 2.813rem;
+    background: black;
+    border: none;
+    outline: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-size: 1em;
+    color: white;
+    font-weight: 500;
+    margin-top: -1%;
+    margin-left: 10%;
+   
+}
+
+.wrapper .input-field .btncreate {
+    width: 80%;
+    height: 2.813rem;
+    background: black;
+    border: none;
+    outline: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-size: 1em;
+    color: white;
+    font-weight: 500;
+    margin-top: 2%;
+    margin-left: 10%;
+    
+}

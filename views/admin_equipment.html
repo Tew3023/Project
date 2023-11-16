@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.33/dist/sweetalert2.all.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="/style/admin_sidebar.css">
+    <title>admin_equipment</title>
+</head>
+<body>
+    <div id="mySidebar" class="sidebar">
+        <a  class="closebtn" onclick="closeNav()"><iconify-icon icon="ic:baseline-close"></iconify-icon></a>
+        <div class="title">
+            <h1>GAOTAS</h1>
+        </div>
+        <hr>
+        <div class="user-place">
+            <a href="/admin" class="kid"><iconify-icon class="icon-1" icon="ph:user"></iconify-icon>USER TABLE</a>
+        </div>
+        <div class="user-place">
+            <a href="/admin/dashboard" class="kid"><iconify-icon class="icon-1" icon="octicon:graph-24"></iconify-icon>DASHBOARD</a>
+        </div>
+        <div class="dropdown">
+            <div class="content"> <iconify-icon class="icon-1" icon="majesticons:data-line"></iconify-icon>PRODUCT DATA <iconify-icon class="icon" icon="ep:arrow-up"></iconify-icon>
+                <hr>
+                <a class="child" href="/admin/table/product"><iconify-icon class="icon-1" icon="iconoir:gas-tank-drop"></iconify-icon>GAS TANK</a>
+                <br>
+                <a class="child" href="/admin/table/equipment"><iconify-icon class="icon-1" icon="ant-design:tool-outlined"></iconify-icon>EQUIPMENT</a>
+                <br>
+                <a class="child" href="/admin/table/food"><iconify-icon class="icon-1" icon="ph:bowl-food"></iconify-icon>FOOD</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <div class="content"> <iconify-icon class="icon-1" icon="fe:list-order"></iconify-icon>ORDER<iconify-icon class="icon" icon="ep:arrow-up"></iconify-icon>
+                <hr>
+                <a class="child" href="/admin/order/product"><iconify-icon class="icon-1" icon="iconoir:gas-tank-drop"></iconify-icon>GAS TANK ORDER</a>
+                <br>
+                <a class="child" href="/admin/order/equipment"><iconify-icon class="icon-1" icon="ant-design:tool-outlined"></iconify-icon>EQUIPMENT ORDER</a>
+                <br>
+                <a class="child" href="/admin/order/food"><iconify-icon class="icon-1" icon="ph:bowl-food"></iconify-icon>FOOD ORDER</a>
+            </div>
+        </div>
+        <div class="container">
+            <hr>
+        </div>
+        <div class="logout">
+            <button onclick="logout()" class="btn-logout">LOGOUT</button>
+        </div>
+    </div>
+    <div id="main">
+        <div id="top">
+            <button class="openbtn" onclick="openNav()"><iconify-icon icon="ri:menu-fill"></iconify-icon></button>
+            <h1>LIST OF EQUIPMENTs</h1>
+        </div>
+        <div class="row pt-3">
+            <div class="col-10 ps-4">
+                <h5>EQUIPMENTs INFORMATION</h5>
+            </div>
+            <div class="col">
+                <button class="btn btn-success" onclick="addProduct()">Add</button>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th id="equipmentid" class="table-success">EQUIPEMNTID</th>
+                    <th id="picture" class="table-success">PICTURE</th>
+                    <th id="name" class="table-success">NAME</th>
+                    <th id="price" class="table-success">PRICE</th>
+                    <th id="amount" class="table-success">AMOUNT</th>
+                    <th class="table-success"></th>
+                </tr>
+            </thead>
+            <tbody id="tblProduct">
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <!-- Add/Edit Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add/Edit product</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form id="formProduct">
+                        <label class="form-label">EQUIPMENTTID</label>
+                        <input type="text" name="equid" class="form-control mb-2" placeholder="equipmentid">
+                        <label class="form-label">PICTURE</label>
+                        <input type="text" name="picture" class="form-control mb-2" placeholder="picture">
+                        <label class="form-label">NAME</label>
+                        <input type="text" name="name" class="form-control mb-3" placeholder="name">
+                        <label class="form-label">PRICE</label>
+                        <input type="text" name="price" class="form-control mb-3" placeholder="price">
+                        <label class="form-label">AMOUNT</label>
+                        <input type="number" name="amount" class="form-control mb-3" placeholder="amount">
+                        <button type="submit" class="btn btn-success">OK</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+          function logout(){
+            fetch("/logout")
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.text();
+                    }
+                    throw Error("Cannot logout");
+                })
+                .then(function (data) {
+                    location.replace(data);
+                })
+                .catch(function (error) {
+                    console.error(error);
+                })
+        }
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+
+            document.querySelector('#equipmentid').innerText = 'equid'
+            document.querySelector('#picture').innerText = 'picture'
+            document.querySelector('#name').innerText = 'name'
+            document.querySelector('#price').innerText = 'price'
+            document.querySelector('#amount').innerText = 'amount'
+
+            // add or edit methods
+
+            var action = 'add';
+            // edit product ID
+            var editID = 0;
+            // get all products
+            getProducts();
+            // add modal
+            const productModal = new bootstrap.Modal(document.querySelector('#productModal'));
+
+            //---------------GET PRODUCTS-----------------
+            function getProducts() {
+                // get product data from server
+                fetch('/equipment')
+                    .then(function (response) {
+                        if (response.ok) {
+                            return response.json();
+                        }
+                        throw Error('Bad response');
+                    })
+                    .then(function (data) {
+                        let rows = '';
+                        data.forEach(function (equipment) {
+                            rows += `<tr><td>${equipment.equid}</td>`;
+                            rows += `<td><img src="${equipment.picture}" alt='toolImage'></td>`;
+                            rows += `<td>${equipment.name}</td>`;
+                            rows += `<td>${equipment.price}</td>`;
+                            rows += `<td>${equipment.amount}</td>`;
+                            rows += `<td><button class="btn btn-warning" onclick=editProduct(${JSON.stringify(equipment)})>Edit</button>`;
+                            rows += `<button class="btn btn-danger ms-2" onclick=deleteProduct(${equipment.equid})>Delete</button></td></tr>`;
+                        });
+                        tblProduct.innerHTML = rows;
+                    })
+                    .catch(function (err) {
+                        console.error(err);
+                        alert(err);
+                    });
+            }
+
+            //---------------DELETE PRODUCT-----------------
+            function deleteProduct(id) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Warning',
+                    text: "Sure to delete this User Information?",
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes'
+                }).then(function (result) {
+                    if (result.isConfirmed) {
+                        fetch(`/equipment/${id}`, { method: 'DELETE' })
+                            .then(function (response) {
+                                if (response.ok) {
+                                    // get updated data
+                                    getProducts();
+                                }
+                            })
+                            .catch(function (err) {
+                                console.error(err);
+                                alert(err);
+                            });
+                    }
+                });
+            }
+
+            //---------------ADD NEW PRODUCT-----------------        
+            const formProduct = document.querySelector('#formProduct');
+            function addProduct() {
+                action = 'add';
+                formProduct.reset();
+                document.querySelector('h4.modal-title').innerText = 'Add new product Information';
+                productModal.show();
+            }
+
+            // add or edit
+            formProduct.onsubmit = function (e) {
+                e.preventDefault();
+                productModal.hide();
+                const equid = formProduct.elements['equid'].value;
+                const picture = formProduct.elements['picture'].value;
+                const name = formProduct.elements['name'].value;
+                const price = formProduct.elements['price'].value;
+                const amount = formProduct.elements['amount'].value;
+                // add or update data
+                // default is 'add'
+                let url = '/equipment';
+                let httpMethod = 'POST';
+                let bodyContent = JSON.stringify(
+                    { "equid": equid, "picture": picture, "name": name, "price": price, "amount": amount}
+                );
+                if (action == 'edit') {
+                    url = `/equipment/${editID}`;
+                    httpMethod = 'PUT';
+                    bodyContent = JSON.stringify(
+                        { "equid": equid, "picture": picture, "name": name, "price": price, "amount": amount }
+                    );
+                }
+
+                fetch(url, {
+                    method: httpMethod,
+                    headers: { "Content-Type": "application/json" },
+                    body: bodyContent
+                })
+                    .then(function (response) {
+                        if (response.ok) {
+                            formProduct.reset(); 
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Add/Edit PRODUCT successfully'
+                            })
+                                .then(function (result) {
+                                    // get updated data
+                                    getProducts();
+                                });
+                        }
+                        else {
+                            throw Error('Bad response');
+                        }
+                    })
+                    .catch(function (err) {
+                    });
+            }
+
+            //---------------EDIT PRODUCT-----------------
+            function editProduct(equipment) {
+                action = 'edit';
+                editID = equipment.equid;
+                // console.log(product.name);
+                document.querySelector('h4.modal-title').innerText = 'Edit Product Information';
+                document.querySelector('input[name="equid"]').value = equipment.equid;
+                document.querySelector('input[name="picture"]').value = equipment.picture;
+                document.querySelector('input[name="name"]').value = equipment.name;
+                document.querySelector('input[name="price"]').value = equipment.price;
+                document.querySelector('input[name="amount"]').value = equipment.amount;
+                // show modal
+                productModal.show();
+            }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.title-2{
+    margin-left: 65px;
+}
+.top{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 4px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.middle{
+    margin-top: 20px;
+    padding: 80px 40px 80px 40px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 4px;
+}
+
+.bottom{
+    margin-top: 20px;
+    padding: 80px 40px 80px 40px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 4px;
+}
+
+#gas{
+    background-color: #FF70A6;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+}
+#user{
+    background-color: #FF9770;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+}
+#income{
+    background-color: #9AD5CA;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.circle , .showUserNumber, .tail,.showGasNumber, .showPriceNumber{
+    display: inline-block;
+}
+.showUserNumber,.showGasNumber,.showPriceNumber{
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.showUserNumber, .tail,.showGasNumber,.showPriceNumber{
+    font-weight: bold;
+    font-family: arial;
+}
+
+@media screen and (max-width:751px)  {
+    .showUserNumber, .tail,.showGasNumber,.showPriceNumber{
+        font-family: arial;
+        font-size: x-small;
+    }
+    .showUserNumber,.showGasNumber,.showPriceNumber{
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+    .title-2{
+        margin-left: 0px;
+    }
+}

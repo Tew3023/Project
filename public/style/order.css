@@ -1,0 +1,72 @@
+.card-body {
+    text-align: center;
+}
+
+.btn-order {
+    border: none;
+    letter-spacing: 1px;
+    color: rgb(255, 255, 255);
+    transition: 0.3S;
+    border-radius: 4px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background: black;
+    width: 100%;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 10px 0 10px 0;
+
+}
+
+.btn-order:hover {
+    letter-spacing: 2px;
+}
+
+#main {
+    display: flex;
+    justify-content: center;
+}
+
+#tool {
+    display: flex;
+    justify-content: center;
+}
+
+#food {
+    display: flex;
+    justify-content: center;
+}
+
+
+#product {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    padding: 50px 50px 50px 50px;
+    margin: 20px;
+    text-align: center;
+}
+
+#equipment {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    padding: 50px 50px 50px 50px;
+    margin: 20px;
+}
+
+#eat {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    padding: 50px 50px 50px 50px;
+    margin: 20px;
+}
+
+.card-img-top {
+    text-align: center;
+    pointer-events: none;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+.card-text {
+    font-weight: bold;
+}
+.card-title {
+    font-weight: bold;
+}

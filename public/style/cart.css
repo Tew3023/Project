@@ -1,0 +1,92 @@
+.navbar {
+    background-color: #00008B;
+}
+
+#product,
+#equipment,
+#food {
+    padding: 5px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.btn-3 {
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-family: arial;
+    letter-spacing: 1px;
+    margin-right: 50px;
+    position: relative;
+}
+
+.btn-3::after {
+    content: '';
+    position: absolute;
+    background-image: linear-gradient(to right, #EDD9A3, #E2E8C0);
+    width: 0%;
+    height: 5px;
+    border-radius: 25px;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 0.3s;
+}
+
+.btn-3:hover::after{
+    width: 50%;
+}
+
+
+.navbar-brand {
+    font-style: italic;
+    font-weight: 900;
+    font-size: 40px;
+    color: yellow;
+    margin-left: 2rem;
+}
+
+.container {
+    margin-top: 3%;
+}
+
+.form-label {
+    font-size: larger;
+    margin-left: 20px;
+}
+
+img {
+    display: flex;
+    width: 150px;
+    justify-content: start;
+    align-items: start;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    pointer-events: none;
+}
+
+.card-text {
+    margin-left: 20px;
+}
+
+.btn-2,
+.btn-1 {
+    border: none;
+    background-color: transparent;
+    font-family: arial;
+    font-weight: bold;
+    color: black;
+    transition: 0.3s;
+}
+
+.btn-1:hover {
+    color: green;  
+}
+
+.btn-2:hover {
+    color: red; 
+}
+
+.status{
+    margin-left: 15%;
+}

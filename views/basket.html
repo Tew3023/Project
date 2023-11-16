@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.33/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="/style/cart.css">
+    <title>CART</title>
+    <style>
+        .navbar {
+            border-bottom: #fff solid 1px;
+        }
+
+        .navbar-brand {
+            font-style: italic;
+            font-weight: 900;
+            font-size: 40px;
+            color: yellow;
+            margin-left: 100px;
+            margin-top: 6px;
+        }
+
+        .payment-place{
+            display: flex;
+        }
+        .paymentPlace01{
+            margin-right: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="navbar" class="navbar navbar-expand-sm">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <h1 class="navbar-brand" href="#">
+                    <p>LPG</p>
+                </h1>
+            </ul>
+            <div>
+                <a href="/homepage"><button type="submit" class="btn-3">BACK</button></a>
+            </div>
+        </div>
+    </nav>
+    <div id="basket" class="container"></div>
+
+    <div class="modal" id="paymoney1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">PAYMENT</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="payment1" action="">
+                        <div class="payment-place">
+                            <div class="paymentPlace01"> 
+                                <input type="radio" class="mb-3" name="fav_language" value="Online">
+                                <label class="form-label">Online payment</label>
+                                <!-- <img src="/img/payment.jpg" alt=""> -->
+                            </div>
+                            <div>
+                                <input type="radio" class="mb-3" name="fav_language" checked value="offline">
+                                <label class="form-label">Cash of delivery</label>
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">CONFIRM</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">CANCAL</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="paymoney2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">PAYMENT</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="payment2" action="">
+                        <div class="payment-place">
+                            <div class="paymentPlace01"> 
+                                <input type="radio" class="mb-3" name="fav_language" value="Online">
+                                <label class="form-label">Online payment</label>
+                                <!-- <img src="/img/payment.jpg" alt=""> -->
+                            </div>
+                            <div>
+                                <input type="radio" class="mb-3" name="fav_language" checked value="offline">
+                                <label class="form-label">Cash of delivery</label>
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Confirm</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="paymoney3">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">PAYMENT</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="payment3" action="">
+                        <div class="payment-place">
+                            <div class="paymentPlace01"> 
+                                <input type="radio" class="mb-3" name="fav_language" value="Online">
+                                <label class="form-label">Online payment</label>
+                                <!-- <img src="/img/payment.jpg" alt=""> -->
+                            </div>
+                            <div>
+                                <input type="radio" class="mb-3" name="fav_language" checked value="offline">
+                                <label class="form-label">Cash of delivery</label>
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Confirm</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        get_product_order();
+        get_equipment_order();
+        get_food_order();
+
+        var action = 'add';
+        var equipment = 0;
+        var editID = 0;
+
+        const paymoney1 = new bootstrap.Modal(document.querySelector('#paymoney1'));
+        const paymoney2 = new bootstrap.Modal(document.querySelector('#paymoney2'));
+        const paymoney3 = new bootstrap.Modal(document.querySelector('#paymoney3'));
+        const main = document.querySelector('#basket')
+        function get_product_order() {
+            fetch('/product_order')
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw Error('Bad response');
+                })
+                .then(function (data) {
+                    console.log(data)
+                    data.forEach(function (product_order) {
+                        const card = document.createElement('div');
+                        card.className = 'card m-2 ';
+                        card.id = 'product';
+                        let cardDetail = `
+                    <div class="card-body">
+                        <img src='${product_order.image}'>
+                        <br>
+                        <h5 class = "card-text">${product_order.price} Baht</h5>
+                        <hr>
+                        <div>
+                            <button onclick='change1(${JSON.stringify(product_order)})' class = "btn-1">CONFIRM</button>
+                            <button onclick = 'deleteProduct(${product_order.order_p_id})' class = "btn-2">CANCLE</button>
+                            <span class = 'status'>payment: ${product_order.status}</span>
+                            <span class = 'status'>amount: ${product_order.amount}</span>
+                        </div>
+                    </div>
+                    `;
+                        card.innerHTML = cardDetail;
+                        main.append(card);
+                    });
+                })
+                .catch(function (err) {
+                    console.error(err);
+                    alert('System error, try again later');
+                });
+        }
+
+
+        function get_equipment_order() {
+            fetch('/equipment_order')
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw Error('Bad response');
+                })
+                .then(function (data) {
+                    console.log(data)
+                    data.forEach(function (equipment_order) {
+                        const card = document.createElement('div');
+                        card.className = 'card m-2';
+                        card.id = 'equipment';
+                        let cardDetail = `
+                    <div class="card-body">
+                        <img src='${equipment_order.image}'>
+                        <br>
+                        <h5 class = "card-text">${equipment_order.price} Baht</h5>
+                        <hr>
+                        <div>
+                            <button onclick='change2(${JSON.stringify(equipment_order)})' class = "btn-1">CONFIRM</button>
+                            <button onclick = 'deleteEquipment(${equipment_order.order_e_id})' class = "btn-2">CANCLE</button>
+                            <span class = 'status'>payment: ${equipment_order.status}</span>
+                            <span class = 'status'>amount: ${equipment_order.amount}</span>
+                        </div>                   
+                    </div>`;
+                        card.innerHTML = cardDetail;
+                        main.append(card);
+                    });
+                })
+                .catch(function (err) {
+                    console.error(err);
+                    alert('System error, try again later');
+                });
+        }
+
+        function get_food_order() {
+            fetch('/food_order')
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw Error('Bad response');
+                })
+                .then(function (data) {
+                    data.forEach(function (food_order) {
+                        const card = document.createElement('div');
+                        card.className = 'card m-2 ';
+                        card.id = 'food';
+                        let cardDetail = `
+                    <div class="card-body">
+                        <img src='${food_order.image}'>
+                        <br>
+                        <h5 class = "card-text">${food_order.price} Baht</h5>
+                        <hr>
+                        <div>
+                            <button onclick='change3(${JSON.stringify(food_order)})' class = "btn-1">CONFIRM</button>
+                            <button onclick = 'deleteFood(${food_order.order_f_id})' class = "btn-2">CANCLE</button> 
+                            <span class = 'status'>payment: ${food_order.status}</span>
+                            <span class = 'status'>amount: ${food_order.amount}</span>
+                        </div>
+                        
+                    </div>`;
+                        card.innerHTML = cardDetail;
+                        main.append(card);
+                    });
+                })
+                .catch(function (err) {
+                    console.error(err);
+                    alert('System error, try again later');
+                });
+        }
+
+        const payment1 = document.querySelector('#payment1')
+        const payment2 = document.querySelector('#payment2')
+        const payment3 = document.querySelector('#payment3')
+
+        // =================================================== Role update ==============================================
+        function change1(product_order) {
+            action = 'add';
+            editID = product_order.order_p_id;
+            paymoney1.show();
+
+        }
+        function change2(equipment_order) {
+            action = 'add';
+            editID = equipment_order.order_e_id;
+            paymoney2.show();
+
+        }
+        function change3(food_order) {
+            action = 'add';
+            editID = food_order.order_f_id;
+            paymoney3.show();
+
+        }
+
+        payment1.onsubmit = function (e) {
+            e.preventDefault();
+            paymoney1.hide();
+            var new_status = 'comfirm';
+            let url = `/product_order/${editID}`;
+            let httpMethod = 'PUT';
+            let bodyContent = JSON.stringify(
+                { "status": new_status }
+            );
+            fetch(url, {
+                method: httpMethod,
+                headers: { "Content-Type": "application/json" },
+                body: bodyContent
+            })
+                .then(function (response) {
+                    if (response.ok) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: 'confirm successfully'
+                        }).then(function (result) {
+                            location.reload();
+                        })
+                    }
+                    else {
+                        throw Error('Bad response');
+                        console.log(err);
+                    }
+                })
+                .catch(function (err) {
+                    alert('failed');
+                    console.log(err);
+                });
+        }
+        payment2.onsubmit = function (e) {
+            e.preventDefault();
+            paymoney2.hide();
+            var new_status = 'comfirm';
+            let url = `/equipment_order/${editID}`;
+            let httpMethod = 'PUT';
+            let bodyContent = JSON.stringify(
+                { "status": new_status }
+            );
+            fetch(url, {
+                method: httpMethod,
+                headers: { "Content-Type": "application/json" },
+                body: bodyContent
+            })
+                .then(function (response) {
+                    if (response.ok) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: 'confirm successfully'
+                        }).then(function (result) {
+                            location.reload();
+                        })
+                    }
+                    else {
+                        throw Error('Bad response');
+                        console.log(err);
+                    }
+                })
+                .catch(function (err) {
+                    alert('failed');
+                    console.log(err);
+                });
+        }
+        payment3.onsubmit = function (e) {
+            e.preventDefault();
+            paymoney3.hide();
+            var new_status = 'comfirm';
+            let url = `/food_order/${editID}`;
+            let httpMethod = 'PUT';
+            let bodyContent = JSON.stringify(
+                { "status": new_status }
+            );
+            fetch(url, {
+                method: httpMethod,
+                headers: { "Content-Type": "application/json" },
+                body: bodyContent
+            })
+                .then(function (response) {
+                    if (response.ok) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: 'confirm successfully'
+                        }).then(function (result) {
+                            location.reload();
+                        })
+                    }
+                    else {
+                        throw Error('Bad response');
+                        console.log(err);
+                    }
+                })
+                .catch(function (err) {
+                    alert('failed');
+                    console.log(err);
+                });
+        }
+
+
+
+        // ================================================ role update ==============================================================
+
+        function deleteProduct(id) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Warning',
+                text: "Sure to cancle this order?",
+                showCancelButton: true,
+                confirmButtonText: 'Yes'
+            }).then(function (result) {
+                if (result.isConfirmed) {
+                    fetch(`/product_order/${id}`, { method: 'DELETE' })
+                        .then(function (response) {
+                            if (response.ok) {
+                                swal.fire({
+                                    icon: 'success',
+                                    title: 'Success',
+                                    text: 'confirm successfully'
+                                }).then(function () {
+                                    location.reload();
+                                })
+
+                            }
+                        })
+                        .catch(function (err) {
+                            console.error(err);
+                            alert(err);
+                        });
+                }
+            });
+        }
+
+
+
+        function deleteEquipment(id) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Warning',
+                text: "Sure to cancle this order?",
+                showCancelButton: true,
+                confirmButtonText: 'Yes'
+            }).then(function (result) {
+                if (result.isConfirmed) {
+                    fetch(`/equipment_order/${id}`, { method: 'DELETE' })
+                        .then(function (response) {
+                            if (response.ok) {
+                                swal.fire({
+                                    icon: 'success',
+                                    title: 'Success',
+                                    text: 'confirm successfully'
+                                }).then(function () {
+                                    location.reload();
+                                })
+
+                            }
+                        })
+                        .catch(function (err) {
+                            console.error(err);
+                            alert(err);
+                        });
+                }
+            });
+        }
+
+
+        function deleteFood(id) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Warning',
+                text: "Sure to cancle this order?",
+                showCancelButton: true,
+                confirmButtonText: 'Yes'
+            }).then(function (result) {
+                if (result.isConfirmed) {
+                    fetch(`/food_order/${id}`, { method: 'DELETE' })
+                        .then(function (response) {
+                            if (response.ok) {
+                                swal.fire({
+                                    icon: 'success',
+                                    title: 'Success',
+                                    text: 'confirm successfully'
+                                }).then(function () {
+                                    location.reload();
+                                })
+                            }
+                        })
+                        .catch(function (err) {
+                            console.error(err);
+                            alert(err);
+                        });
+                }
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>
