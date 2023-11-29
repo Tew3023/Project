@@ -636,7 +636,7 @@ app.post("/equipment_order", function (req, res) {
 //=========================== get infofrom from equipment table ==================================================
 app.get("/equipment_order", function (req, res) {
   const userid = req.session.userid;
-  const sql = "SELECT * FROM equipment_order WHERE userid = ? AND status = 'not_comfirm' ";
+  const sql = "SELECT * FROM equipment_order WHERE userid = ? AND status = 'waiting for payment'";
   con.query(sql, [userid], function (err, results) {
     if (err) {
       console.error(err);
@@ -707,7 +707,7 @@ app.post("/food_order", function (req, res) {
 //=========================== get infofrom from food table ==================================================
 app.get("/food_order", function (req, res) {
   const userid = req.session.userid;
-  const sql = "SELECT * FROM food_order WHERE userid = ? AND status = 'not_comfirm' ";
+  const sql = "SELECT * FROM food_order WHERE userid = ? AND status = 'waiting for payment' ";
   con.query(sql, [userid], function (err, results) {
     if (err) {
       console.error(err);
@@ -1049,11 +1049,11 @@ app.get("/forget", function (req, res) {
   res.sendFile(path.join(__dirname, "views/forget.html"));
 });
 app.get("/profile", function (req, res) {
-  // if(req.session.name){
+  if(req.session.name){
   res.sendFile(path.join(__dirname, "views/profile.html"));
-  // }else{
-  //   res.redirect('/login');
-  // }
+  }else{
+    res.redirect('/login');
+  }
 });
 
 app.get("/cart", function (req, res) {

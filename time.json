@@ -1,0 +1,9 @@
+{
+    "products": [
+        {"id": 1, "name": "shirt", "price": 220, "image": "shirt.png"},
+        {"id": 2, "name": "shirt", "price": 220, "image": "shirt.png"},
+        {"id": 3, "name": "shirt", "price": 220, "image": "shirt.png"},
+        {"id": 4, "name": "shirt", "price": 220, "image": "shirt.png"},
+        {"id": 5, "name": "shirt", "price": 220, "image": "shirt.png"}
+    ]
+}
